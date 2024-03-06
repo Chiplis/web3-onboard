@@ -10,7 +10,7 @@ function magic(options: MagicInitOptions): WalletInit {
       throw error
     }
   }
-  const { apiKey, userEmail } = options
+  const { apiKey, userEmail, redirect } = options
   const walletName = 'Magic Wallet'
 
   return () => {
@@ -50,7 +50,7 @@ function magic(options: MagicInitOptions): WalletInit {
 
         const loginWithEmail = async (emailAddress: string) => {
           try {
-            await magicInstance.auth.loginWithMagicLink({ email: emailAddress })
+            await magicInstance.auth.loginWithMagicLink({ email: emailAddress, redirectURI: redirect })
             return await magicInstance.user.isLoggedIn()
           } catch (err) {
             throw new Error(

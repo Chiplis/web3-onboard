@@ -6,7 +6,8 @@ export type LoginOptions = {
 
 export type MagicInitOptions = {
   apiKey: string
-  userEmail?: string
+  userEmail?: string,
+  redirect?: string
 }
 
 export type EmailLoginFunction = (emailAddress: string) => Promise<boolean>
